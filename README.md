@@ -9,7 +9,7 @@
 Install with your favourite plugin manager, and call `require("base46").setup` with your preferred options. Example with `lazy.nvim`:
 ```lua
 {
-  "Silzinc/base46.nvim",
+  "Silzinc/base46",
   lazy = true,
   opts = {},
 }
