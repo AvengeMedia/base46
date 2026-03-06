@@ -16,6 +16,18 @@ Install with your favourite plugin manager, and call `require("base46").setup` w
 ```
 You can set `lazy = true`, as `lazy.nvim` will load the plugin automatically if you decide to load one of its colorschemes.
 
+## Loading a colorscheme
+
+As simple as
+```lua
+-- Lua
+vim.cmd.colorscheme("base46-gruvchad")
+```
+```vim
+" Vim
+colorscheme base46-chadracula-evondev
+```
+
 ## Supported Integrations
 
 - Bufferline.nvim
