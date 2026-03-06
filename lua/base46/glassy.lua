@@ -1,75 +1,72 @@
-local colors = require("base46").get_theme_tb "base_30"
+return function(theme)
+  local colors = require("base46").theme_tables[theme].base_30
 
-local M = {
-  NvimTreeWinSeparator = {
-    fg = colors.one_bg2,
-    bg = "NONE",
-  },
+  local M = {
+    NvimTreeWinSeparator = {
+      fg = colors.one_bg2,
+      bg = "NONE",
+    },
 
-  TelescopeResultsTitle = {
-    fg = colors.black,
-    bg = colors.blue,
-  },
-}
+    TelescopeResultsTitle = {
+      fg = colors.black,
+      bg = colors.blue,
+    },
 
--- for hl groups which need bg = "NONE" only!
-local hl_groups = {
-  "NormalFloat",
-  "Normal",
-  "Folded",
-  "NvimTreeNormal",
-  "NvimTreeNormalNC",
-  "NvimTreeCursorLine",
-  "TelescopeNormal",
-  "TelescopePrompt",
-  "TelescopeResults",
-  "TelescopePromptNormal",
-  "TelescopePromptPrefix",
-  "CursorLine",
-  "Pmenu",
-  "BlinkCmpMenu",
-  "BlinkCmpDoc",
-  "BlinkCmpSignatureHelp",
-  "CmpPmenu",
-  "CmpDoc",
-  "WinBar",
-  "WinBarNC",
-}
+    TelescopeBorder = {
+      fg = colors.grey,
+      bg = "NONE",
+    },
 
-for _, groups in ipairs(hl_groups) do
-  M[groups] = {
-    bg = "NONE",
+    TelescopePromptBorder = {
+      fg = colors.grey,
+      bg = "NONE",
+    },
+
+    CmpDocBorder = {
+      fg = colors.grey,
+      bg = "NONE",
+    },
+
+    BlinkCmpDocBorder = {
+      fg = colors.grey,
+      bg = "NONE",
+    },
+
+    BlinkCmpMenuBorder = {
+      fg = colors.grey,
+      bg = "NONE",
+    },
   }
+
+  -- hl groups that only need bg = "NONE"
+  local hl_groups = {
+    "NormalFloat",
+    "Normal",
+    "Folded",
+    "NvimTreeNormal",
+    "NvimTreeNormalNC",
+    "NvimTreeCursorLine",
+    "TelescopeNormal",
+    "TelescopePrompt",
+    "TelescopeResults",
+    "TelescopePromptNormal",
+    "TelescopePromptPrefix",
+    "CursorLine",
+    "Pmenu",
+    "BlinkCmpMenu",
+    "BlinkCmpDoc",
+    "BlinkCmpSignatureHelp",
+    "CmpPmenu",
+    "CmpDoc",
+    "WinBar",
+    "WinBarNC",
+  }
+
+  for _, groups in ipairs(hl_groups) do
+    M[groups] = {
+      bg = "NONE",
+    }
+  end
+
+  return M
 end
-
-M.TelescopeBorder = {
-  fg = colors.grey,
-  bg = "NONE",
-}
-
-M.TelescopePromptBorder = {
-  fg = colors.grey,
-  bg = "NONE",
-}
-
-M.CmpDocBorder = {
-  bg = "none",
-  fg = colors.grey,
-}
-
-M.BlinkCmpDocBorder = {
-  bg = "none",
-  fg = colors.grey,
-}
-
-M.BlinkCmpMenuBorder = {
-  bg = "none",
-  fg = colors.grey,
-}
-
-M.BlinkCmpDocBorder = {
-  bg = "none",
-  fg = colors.grey,
-}
-
-return M

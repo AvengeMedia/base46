@@ -270,12 +270,11 @@ M.hex2complementary = function(hex, count)
   return complementary_colors
 end
 
--- Mix two colors with a given percentage.
--- @param first The primary hex color.
--- @param second The hex color you want to mix into the first color.
--- @param strength The percentage of second color in the output.
---                 This needs to be a number between 0 - 100.
--- @return The mixed color as a hex value
+---Mix two colors with a given percentage.
+---@param first string The primary hex color.
+---@param second string The hex color you want to mix into the first color.
+---@param strength number The percentage of second color in the output. This needs to be a number between 0 - 100.
+---@return string mixed The mixed color as a hex value
 M.mix = function(first, second, strength)
   if strength == nil then
     strength = 0.5

@@ -1,6 +1,6 @@
-local colors = require("base46").get_theme_tb "base_30"
-
-local telescope_style = require("nvconfig").ui.telescope.style
+local theme = require("base46").current_theme
+local colors = require("base46").theme_tables[theme].base_30
+local telescope_style = require("base46").opts.nvchad.telescope_style
 
 local hlgroups = {
 

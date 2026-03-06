@@ -1,6 +1,7 @@
-local get_theme_tb = require("base46").get_theme_tb
-local colors = get_theme_tb "base_30"
-local theme_type = get_theme_tb "type"
+local theme_tables = require("base46").theme_tables
+local theme = require("base46").current_theme
+local colors = theme_tables[theme].base_30
+local theme_type = theme_tables[theme].type
 local tune_color = require("base46.colors").change_hex_lightness
 
 return {
@@ -18,8 +19,8 @@ return {
   NvimTreeGitIgnored = { fg = colors.light_grey },
   NvimTreeDiagnosticErrorFileHL = { link = "DiagnosticError" },
   NvimTreeDiagnosticErrorFolderHL = { link = "DiagnosticError" },
-  NvimTreeDiagnosticInfoFileHL =  { link = "DiagnosticNormal" },
-  NvimTreeDiagnosticInfoFolderHL =  { link = "DiagnosticNormal" },
+  NvimTreeDiagnosticInfoFileHL = { link = "DiagnosticNormal" },
+  NvimTreeDiagnosticInfoFolderHL = { link = "DiagnosticNormal" },
   NvimTreeDiagnosticWarnFileHL = { link = "DiagnosticWarn" },
   NvimTreeDiagnosticWarnFolderHL = { link = "DiagnosticWarn" },
   NvimTreeDiagnosticHintFileHL = { link = "DiagnosticHint" },

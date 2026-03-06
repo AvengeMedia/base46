@@ -1,5 +1,5 @@
-local colors = require("base46").get_theme_tb "base_30"
-
+local theme = require("base46").current_theme
+local colors = require("base46").theme_tables[theme].base_30
 return {
   MasonHeader = { bg = colors.red, fg = colors.black },
   MasonHighlight = { fg = colors.blue },

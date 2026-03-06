@@ -1,5 +1,5 @@
-local colors = require("base46").get_theme_tb "base_30"
-
+local theme = require("base46").current_theme
+local colors = require("base46").theme_tables[theme].base_30
 return {
   TodoBgFix = { fg = colors.black2, bg = colors.red, bold = true },
   TodoBgHack = { fg = colors.black2, bg = colors.orange, bold = true },

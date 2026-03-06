@@ -94,7 +94,7 @@ M.polish_hl = {
   },
 }
 
-local StTheme = require("nvconfig").ui.statusline.theme
+local StTheme = require("base46").opts.nvchad.statusline_theme
 
 if StTheme == "vscode_colored" then
   M.base_30.one_bg3 = M.base_30.line

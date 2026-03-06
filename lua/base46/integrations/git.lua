@@ -1,5 +1,6 @@
-local theme = require("base46").get_theme_tb "base_16"
-local colors = require("base46").get_theme_tb "base_30"
+local theme = require("base46").current_theme
+local base16 = require("base46").theme_tables[theme].base_16
+local colors = require("base46").theme_tables[theme].base_30
 local mix = require("base46.colors").mix
 
 return {
@@ -54,66 +55,66 @@ return {
 
   -- git commits
   gitcommitOverflow = {
-    fg = theme.base08,
+    fg = base16.base08,
   },
 
   gitcommitSummary = {
-    fg = theme.base0B,
+    fg = base16.base0B,
   },
 
   gitcommitComment = {
-    fg = theme.base03,
+    fg = base16.base03,
   },
 
   gitcommitUntracked = {
-    fg = theme.base03,
+    fg = base16.base03,
   },
 
   gitcommitDiscarded = {
-    fg = theme.base03,
+    fg = base16.base03,
   },
 
   gitcommitSelected = {
-    fg = theme.base03,
+    fg = base16.base03,
   },
 
   gitcommitHeader = {
-    fg = theme.base0E,
+    fg = base16.base0E,
   },
 
   gitcommitSelectedType = {
-    fg = theme.base0D,
+    fg = base16.base0D,
   },
 
   gitcommitUnmergedType = {
-    fg = theme.base0D,
+    fg = base16.base0D,
   },
 
   gitcommitDiscardedType = {
-    fg = theme.base0D,
+    fg = base16.base0D,
   },
 
   gitcommitBranch = {
-    fg = theme.base09,
+    fg = base16.base09,
     bold = true,
   },
 
   gitcommitUntrackedFile = {
-    fg = theme.base0A,
+    fg = base16.base0A,
   },
 
   gitcommitUnmergedFile = {
-    fg = theme.base08,
+    fg = base16.base08,
     bold = true,
   },
 
   gitcommitDiscardedFile = {
-    fg = theme.base08,
+    fg = base16.base08,
     bold = true,
   },
 
   gitcommitSelectedFile = {
-    fg = theme.base0B,
+    fg = base16.base0B,
     bold = true,
   },
 }

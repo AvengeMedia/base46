@@ -1,4 +1,5 @@
-local theme = require("base46").get_theme_tb "base_16"
+local theme = require("base46").current_theme
+local base16 = require("base46").theme_tables[theme].base_16
 
 return {
   ["@lsp.type.class"] = { link = "Structure" },
@@ -16,7 +17,7 @@ return {
   ["@lsp.type.type"] = { link = "@type" },
   ["@lsp.type.typeParamater"] = { link = "TypeDef" },
   ["@lsp.type.variable"] = { link = "@variable" },
-  ["@event"] = { fg = theme.base08 },
-  ["@modifier"] = { fg = theme.base08 },
-  ["@regexp"] = { fg = theme.base0F },
+  ["@event"] = { fg = base16.base08 },
+  ["@modifier"] = { fg = base16.base08 },
+  ["@regexp"] = { fg = base16.base0F },
 }

@@ -1,8 +1,8 @@
-local opts = require("nvconfig").base46
+local opts = require("base46").opts
 
-local base16 = require("base46").get_theme_tb "base_16"
-local colors = require("base46").get_theme_tb "base_30"
-
+local theme = require("base46").current_theme
+local base16 = require("base46").theme_tables[theme].base_16
+local colors = require("base46").theme_tables[theme].base_30
 local hlgroups = {
   NavicIconsConstant = { fg = base16.base09 },
   NavicIconsFunction = { fg = base16.base0D },

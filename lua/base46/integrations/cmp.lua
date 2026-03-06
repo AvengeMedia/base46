@@ -1,6 +1,7 @@
-local base16 = require("base46").get_theme_tb "base_16"
-local colors = require("base46").get_theme_tb "base_30"
+local theme = require("base46").current_theme
 local mixcolors = require("base46.colors").mix
+local base16 = require("base46").theme_tables[theme].base_16
+local colors = require("base46").theme_tables[theme].base_30
 
 local highlights = {
   CmpItemAbbr = { fg = colors.white },
@@ -47,7 +48,7 @@ local item_kinds = {
   CmpItemKindSuperMaven = { fg = colors.yellow },
 }
 
-local cmp_ui = require("nvconfig").ui.cmp
+local cmp_style = require("base46").opts.nvchad.cmp_style
 
 -- custom highlights per style!
 local styles = {
@@ -103,20 +104,20 @@ local black2_l = generate_color(colors.black2, 6)
 local black2_d = generate_color(colors.black2, -6)
 
 -- override item_kind highlights for atom style
-if cmp_ui.style == "atom" then
+if cmp_style == "atom" then
   for key, value in pairs(item_kinds) do
     item_kinds[key] = vim.tbl_deep_extend("force", value, { bg = vim.o.bg == "dark" and black2_l or black2_d })
   end
 end
 
 -- override item_kind highlights for atom_colored style
-if cmp_ui.style == "atom_colored" then
+if cmp_style == "atom_colored" then
   for key, value in pairs(item_kinds) do
     item_kinds[key] = { fg = value.fg, bg = mixcolors(value.fg, colors.black, 70) }
   end
 end
 
-highlights = vim.tbl_deep_extend("force", highlights, styles[cmp_ui.style] or {})
+highlights = vim.tbl_deep_extend("force", highlights, styles[cmp_style] or {})
 highlights = vim.tbl_deep_extend("force", highlights, item_kinds)
 
 return highlights

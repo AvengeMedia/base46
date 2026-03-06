@@ -61,9 +61,9 @@ M.polish_hl = {
     Tag = { fg = M.base_30.red },
   },
   treesitter = {
-    ['@tag'] = { fg = M.base_30.red },
-    ['@tag.attribute'] = { fg = M.base_30.purple },
-    ['@tag.delimiter'] = { fg = M.base_30.brown },
+    ["@tag"] = { fg = M.base_30.red },
+    ["@tag.attribute"] = { fg = M.base_30.purple },
+    ["@tag.delimiter"] = { fg = M.base_30.brown },
     ["@keyword.function"] = { fg = M.base_30.blue },
     ["@keyword.exception"] = { fg = M.base_30.blue },
     ["@type.builtin"] = { fg = M.base_30.red },

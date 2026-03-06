@@ -1,5 +1,6 @@
-local base16 = require("base46").get_theme_tb "base_16"
-local colors = require("base46").get_theme_tb "base_30"
+local theme = require("base46").current_theme
+local base16 = require("base46").theme_tables[theme].base_16
+local colors = require("base46").theme_tables[theme].base_30
 local mixcolors = require("base46.colors").mix
 local generate_color = require("base46.colors").change_hex_lightness
 
@@ -69,7 +70,7 @@ for kind, color in pairs(kinds) do
 end
 
 -- style-specific overrides
-local cmp_ui = require("nvconfig").ui.cmp
+local cmp_style = require("base46").opts.nvchad.cmp_style
 
 local styles = {
   default = {
@@ -104,7 +105,7 @@ local styles = {
 }
 
 -- atom style: add bg to kinds
-if cmp_ui.style == "atom" then
+if cmp_style == "atom" then
   for kind, _ in pairs(kinds) do
     local hl_name = "BlinkCmpKind" .. kind
     highlights[hl_name] = vim.tbl_deep_extend("force", highlights[hl_name] or {}, {
@@ -114,7 +115,7 @@ if cmp_ui.style == "atom" then
 end
 
 -- atom_colored: mix fg with black for bg
-if cmp_ui.style == "atom_colored" then
+if cmp_style == "atom_colored" then
   for kind, _ in pairs(kinds) do
     local hl_name = "BlinkCmpKind" .. kind
     local fg = highlights[hl_name] and highlights[hl_name].fg or colors.white
@@ -126,6 +127,6 @@ if cmp_ui.style == "atom_colored" then
 end
 
 -- merge style overrides
-highlights = vim.tbl_deep_extend("force", highlights, styles[cmp_ui.style] or {})
+highlights = vim.tbl_deep_extend("force", highlights, styles[cmp_style] or {})
 
 return highlights
