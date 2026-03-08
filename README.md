@@ -1,4 +1,4 @@
-## NvChad-independant version of its theme plugin
+## NvChad-independent version of its theme plugin
 
 - This plugin should provide the same themes as those present in NvChad, without requiring either NvChad or `nvconfig` to be configured.
 - Themes behave more like "regular" themes, and can be enabled with a `colorscheme` command.
