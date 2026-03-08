@@ -144,7 +144,7 @@ Other than that, you should be able to use the options `hl_override` and `change
 
 ## Creating your own theme
 
-The most natural way, in Neovim, to create your own colorscheme, is to create a lua file with your scheme's name under `colors/` in your config directory. Typically, in `~/.config/nvim/colors/foo.lua` on Linux. Then, you just write a lua script to be executed when `colorscheme foo` is called. Below is how such a file can look like to create a custom theme with base46. For complete examples of these theme tables, you can look at [NvChad's builtins](https://github.com/NvChad/base46/tree/v3.0/lua/base46/themes).
+The most natural way, in Neovim, to create your own colorscheme, is to create a lua file with your scheme's name under `colors/` in your config directory. Typically, in `~/.config/nvim/colors/foo.lua` on Linux. Then, you just write a lua script to be executed when `colorscheme foo` is called. Below is how such a file can look like to create a custom theme with base46. For complete examples of these theme tables, you can look at [NvChad's builtins](https://nvchad.com/themes) (look at the file names [here](https://github.com/NvChad/base46/tree/v3.0/lua/base46/themes) to know the exact name of the theme).
 
 Some colors are found by lightening or darkening others down. To this end, you can use a color lightening/darkening tool, such as [this one](https://imagecolorpicker.com/color-code).
 
