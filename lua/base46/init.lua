@@ -55,6 +55,9 @@
 ---@field folder_bg string
 
 local M = {
+  -- there are a few plugins named `base46` in the wild
+  _AUTHOR = "Silzinc",
+
   opts = {
     -- Each theme has a `type` field set to dark or light.
     -- If this is true, vim.o.background will be updated accordingly when a theme is loaded.
