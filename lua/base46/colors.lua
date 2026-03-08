@@ -30,10 +30,15 @@ local M = {}
 -- @return r: Red (0-255)
 -- @return g: Green (0-255)
 -- @return b: Blue (0-255)
+---Convert a hex color value to RGB
+---@param hex string The hex color value
+---@return number? r Red (0-255)
+---@return number? g Green (0-255)
+---@return number? b Blue (0-255)
 M.hex2rgb = function(hex)
   local hash = string.sub(hex, 1, 1) == "#"
   if string.len(hex) ~= (7 - (hash and 0 or 1)) then
-    return nil
+    return
   end
 
   local r = tonumber(hex:sub(2 - (hash and 0 or 1), 3 - (hash and 0 or 1)), 16)
@@ -42,27 +47,31 @@ M.hex2rgb = function(hex)
   return r, g, b
 end
 
--- Convert a hex color value to RGB ratio
--- @param hex: The hex color value
--- @return r: Red (0-100)
--- @return g: Green (0-100)
--- @return b: Blue (0-100)
+---Convert a hex color value to RGB ratio
+---@param hex string The hex color value
+---@return number r Red (0-100)
+---@return number g Green (0-100)
+---@return number b Blue (0-100)
 M.hex2rgb_ratio = function(hex)
   local r, g, b = M.hex2rgb(hex)
   return math.floor(r / 255 * 100), math.floor(g / 255 * 100), math.floor(b / 255 * 100)
 end
 
--- Convert an RGB color value to hex
--- @param r: Red (0-255)
--- @param g: Green (0-255)
--- @param b: Blue (0-255)
--- @return The hexadecimal string representation of the color
+---Convert an RGB color value to hex
+---@param r number Red (0-255)
+---@param g number Green (0-255)
+---@param b number Blue (0-255)
+---@return string The hexadecimal string representation of the color
 M.rgb2hex = function(r, g, b)
   return string.format("#%02x%02x%02x", math.floor(r), math.floor(g), math.floor(b))
 end
 
--- Helper function to convert a HSL color value to RGB
--- Not to be used directly, use M.hsl2rgb instead
+---Helper function to convert a HSL color value to RGB
+---Not to be used directly, use M.hsl2rgb instead
+---@param p number
+---@param q number
+---@param a number
+---@return number
 M.hsl2rgb_helper = function(p, q, a)
   if a < 0 then
     a = a + 6
@@ -81,13 +90,13 @@ M.hsl2rgb_helper = function(p, q, a)
   end
 end
 
--- Convert a HSL color value to RGB
--- @param h: Hue (0-360)
--- @param s: Saturation (0-1)
--- @param l: Lightness (0-1)
--- @return r: Red (0-255)
--- @return g: Green (0-255)
--- @return b: Blue (0-255)
+---Convert a HSL color value to RGB
+---@param h number Hue (0-360)
+---@param s number Saturation (0-1)
+---@param l number Lightness (0-1)
+---@return number r Red (0-255)
+---@return number g Green (0-255)
+---@return number b Blue (0-255)
 M.hsl2rgb = function(h, s, l)
   local t1, t2, r, g, b
 
@@ -106,13 +115,13 @@ M.hsl2rgb = function(h, s, l)
   return r, g, b
 end
 
--- Convert an RGB color value to HSL
--- @param r Red (0-255)
--- @param g Green (0-255)
--- @param b Blue (0-255)
--- @return h Hue (0-360)
--- @return s Saturation (0-1)
--- @return l Lightness (0-1)
+---Convert an RGB color value to HSL
+---@param r number Red (0-255)
+---@param g number Green (0-255)
+---@param b number Blue (0-255)
+---@return number h Hue (0-360)
+---@return number s Saturation (0-1)
+---@return number l Lightness (0-1)
 M.rgb2hsl = function(r, g, b)
   local min, max, l, s, maxcolor, h
   r, g, b = r / 255, g / 255, b / 255
@@ -154,21 +163,24 @@ M.rgb2hsl = function(r, g, b)
   return h, s, l
 end
 
--- Convert a hex color value to HSL
--- @param hex: The hex color value
--- @param h: Hue (0-360)
--- @param s: Saturation (0-1)
--- @param l: Lightness (0-1)
+---Convert a hex color value to HSL
+---@param hex string The hex color value
+---@return number? h Hue (0-360)
+---@return number? s Saturation (0-1)
+---@return number? l Lightness (0-1)
 M.hex2hsl = function(hex)
   local r, g, b = M.hex2rgb(hex)
+  if not r or not g or not b then
+    return
+  end
   return M.rgb2hsl(r, g, b)
 end
 
--- Convert a HSL color value to hex
--- @param h: Hue (0-360)
--- @param s: Saturation (0-1)
--- @param l: Lightness (0-1)
--- @returns hex color value
+---Convert a HSL color value to hex
+---@param h number Hue (0-360)
+---@param s number Saturation (0-1)
+---@param l number Lightness (0-1)
+---@return string hex hex color value
 M.hsl2hex = function(h, s, l)
   local r, g, b = M.hsl2rgb(h, s, l)
   return M.rgb2hex(r, g, b)
@@ -179,8 +191,16 @@ end
 -- @param amount The amount to change the hue.
 --               Negative values decrease the hue, positive values increase it.
 -- @return The hex color value
+
+---Change the hue of a color by a given amount
+---@param hex string The hex color value
+---@param percent number The amount to change the hue. Negative values decrease the hue, positive values increase it.
+---@return string? hex The hex color value
 M.change_hex_hue = function(hex, percent)
   local h, s, l = M.hex2hsl(hex)
+  if not h or not s or not l then
+    return
+  end
   -- Convert percentage to a degree shift
   local shift = (percent / 100) * 360
   h = (h + shift) % 360
@@ -190,13 +210,15 @@ M.change_hex_hue = function(hex, percent)
   return M.hsl2hex(h, s, l)
 end
 
--- Desaturate or saturate a color by a given percentage
--- @param hex The hex color value
--- @param percent The percentage to desaturate or saturate the color.
---                Negative values desaturate the color, positive values saturate it
--- @return The hex color value
+---Desaturate or saturate a color by a given percentage
+---@param hex string The hex color value
+---@param percent number The percentage to desaturate or saturate the color. Negative values desaturate the color, positive values saturate it
+---@return string? hex The hex color value
 M.change_hex_saturation = function(hex, percent)
   local h, s, l = M.hex2hsl(hex)
+  if not h or not s or not l then
+    return
+  end
   s = s + (percent / 100)
   if s > 1 then
     s = 1
@@ -207,13 +229,15 @@ M.change_hex_saturation = function(hex, percent)
   return M.hsl2hex(h, s, l)
 end
 
--- Lighten or darken a color by a given percentage
--- @param hex The hex color value
--- @param percent The percentage to lighten or darken the color.
---                Negative values darken the color, positive values lighten it
--- @return The hex color value
+---Lighten or darken a color by a given percentage
+---@param hex string The hex color value
+---@param percent number The percentage to lighten or darken the color. Negative values darken the color, positive values lighten it
+---@return string? hex The hex color value
 M.change_hex_lightness = function(hex, percent)
   local h, s, l = M.hex2hsl(hex)
+  if not h or not s or not l then
+    return
+  end
   l = l + (percent / 100)
   if l > 1 then
     l = 1
@@ -224,14 +248,17 @@ M.change_hex_lightness = function(hex, percent)
   return M.hsl2hex(h, s, l)
 end
 
--- Compute a gradient between two colors
--- @param hex1 The first hex color value
--- @param hex2 The second hex color value
--- @param steps The number of steps to compute
--- @return A table of hex color values
+---Compute a gradient between two colors
+---@param hex1 string The first hex color value
+---@param hex2 string The second hex color value
+---@param steps number The number of steps to compute
+---@return string[] gradient A table of hex color values
 M.compute_gradient = function(hex1, hex2, steps)
   local h1, s1, l1 = M.hex2hsl(hex1)
   local h2, s2, l2 = M.hex2hsl(hex2)
+  if not h1 or not s1 or not l1 or not h2 or not s2 or not l2 then
+    return {}
+  end
   local h, s, l
   local h_step = (h2 - h1) / (steps - 1)
   local s_step = (s2 - s1) / (steps - 1)
@@ -248,12 +275,15 @@ M.compute_gradient = function(hex1, hex2, steps)
   return gradient
 end
 
--- Generate complementary colors
--- @param hex The hex color value (string)
--- @param count The number of complementary colors to generate
--- @return A table containing the complementary colors in hex format
+---Generate complementary colors
+---@param hex string The hex color value
+---@param count number The number of complementary colors to generate
+---@return string[] # A table containing the complementary colors in hex format
 M.hex2complementary = function(hex, count)
   local h, s, l = M.hex2hsl(hex)
+  if not h or not s or not l then
+    return {}
+  end
   local complementary_colors = {}
 
   -- Calculate the hue for the complementary color (180 degrees shift)
