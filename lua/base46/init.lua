@@ -226,10 +226,101 @@ local term = {
   "base07",
 }
 
+---@param theme string
+---@return Base46Table?
+M.get_builtin_theme = function(theme)
+  local present, base46table = pcall(require, "base46.themes." .. theme)
+  if present then
+    return base46table
+  end
+end
+
+---@param t table
+---@param f fun(_): any
+local function tbl_deep_map_inplace(t, f)
+  for k, v in pairs(t) do
+    if type(v) == "table" then
+      tbl_deep_map_inplace(v, f)
+    else
+      t[k] = f(v)
+    end
+  end
+end
+
+---WARN: `design_table` is modified in place.
+---
+---Creates new base46 palette from a `design_table` by changing the colors
+---related to background of the UI, targetting `bg_color` as a global background.
+---Does nothing if `bg_color` is an invalid hex string.
+---@param design_table Base46Table Original table
+---@param bg_color string Hex string
+---@return Base46Table
+M.theme_set_bg = function(design_table, bg_color)
+  local r, g, b = require("base46.colors").hex2rgb(bg_color)
+  if not r or not g or not b then
+    return design_table
+  end
+  local lighten_dir
+  if design_table.type == "light" then
+    lighten_dir = -1
+  else
+    lighten_dir = 1
+  end
+  -- shorthand
+  local b30 = design_table.base_30
+  -- the operations here just follow siduck's heuristic recommandation
+  b30.black = bg_color
+  b30.darker_black = assert(lighten(b30.black, lighten_dir * -6))
+  b30.black2 = assert(lighten(b30.black, lighten_dir * 6))
+  b30.one_bg = assert(lighten(b30.black, lighten_dir * 10))
+  b30.one_bg2 = assert(lighten(b30.one_bg, lighten_dir * 6))
+  b30.one_bg3 = assert(lighten(b30.one_bg2, lighten_dir * 6))
+
+  design_table.base_16.base00 = bg_color
+
+  return design_table
+end
+
+---WARN: `design_table` is modified in place.
+---
+---Creates new base46 palette from a `design_table` by shifting the hues of its colors towards
+---that of `source_color`. Does nothing if `source_color` is an invalid hex string, or if either
+---`harmony` or `threshold` are outside valid ranges.
+---@param design_table Base46Table Original table
+---@param source_color string Hex string
+---@param harmony number? (0-1, default: 0.5) How much the colors must be shifted towards `source_color`.
+---@param threshold number? (0-180, default: 100) Maximum authorized hue shift, in degrees
+---@return Base46Table
+M.theme_harmonize = function(design_table, source_color, harmony, threshold)
+  if harmony == nil then
+    harmony = 0.5
+  end
+  if threshold == nil then
+    threshold = 100
+  end
+
+  local r, g, b = require("base46.colors").hex2rgb(source_color)
+  if not r or not g or not b or harmony < 0 or harmony > 1 or threshold < 0 or threshold > 180 then
+    return design_table
+  end
+  tbl_deep_map_inplace(design_table, function(value)
+    if type(value) ~= "string" then
+      return value
+    end
+    local new_hue = require("base46.colors").harmonize(value, source_color, harmony, threshold)
+    if new_hue ~= nil then
+      return new_hue
+    else
+      return value
+    end
+  end)
+  return design_table
+end
+
 M.load = function(theme)
   if not M.theme_tables[theme] then
-    local present, base46table = pcall(require, "base46.themes." .. theme)
-    if present then
+    local base46table = M.get_builtin_theme(theme)
+    if base46table then
       M.theme_tables[theme] = base46table
     else
       vim.notify("Theme '" .. theme .. "' not found", vim.lsp.log.ERROR, { title = "base46" })

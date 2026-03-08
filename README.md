@@ -152,6 +152,7 @@ Some colors are found by lightening or darkening others down. To this end, you c
 have to use those exact numbers.**
 
 ```lua
+---colors/foo.lua
 -- All colors are expected to be hexadecimal strings.
 
 ---@type Base46Table
@@ -214,7 +215,7 @@ local theme_table = {
   polish_hl = {
     defaults = {
       Comment = {
-        bg = "#ffffff", -- or M.base_30.cyan
+        bg = "#ffffff",
         italic = true,
       },
     },
@@ -231,6 +232,30 @@ local theme_table = {
 -- Choose any name you want, it does not even have to be the name of the file, although it would be better.
 require("base46").theme_tables["foo"] = theme_table
 require("base46").load("foo")
+```
+
+## Quickly generate a theme based on a builtin one
+
+This plugin was created with the intention of integrating it with [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell), which (like many other material 3 based shells) generates its UI from a single primary color. Following the example below, you can take any of the builtin themes and shift the hues of its colors towards that of a primary color, and get a new theme that will better align with your shell's UI. Here, we take `"nord"` as a base, shift it towards the pure red color `"#ff0000"` and set its background to a warm black `"#120e03"`.
+
+```lua
+---colors/nord-red.lua
+local base46 = require("base46")
+local theme_name = "nord-red"
+
+-- avoid generating the theme twice in the same session
+if not base46.theme_tables[theme_name] then
+  -- be careful: the functions used to get a theme table and modify 
+  -- it act on it in-place, without making copies.
+  local builtin_nord = vim.deepcopy(assert(base46.get_builtin_theme("nord")))
+  -- some other options are available to choose how much you want to harmonize nord towards red
+  local nord_red = base46.theme_harmonize(builtin_nord, "#ff0000")
+  nord_red = base46.theme_set_bg(nord_red, "#120e03")
+
+  base46.theme_tables[theme_name] = nord_red
+end
+
+base46.load(theme_name)
 ```
 
 ## Credits
