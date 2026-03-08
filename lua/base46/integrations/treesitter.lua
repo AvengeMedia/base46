@@ -81,7 +81,7 @@ return {
   ["@markup.strikethrough"] = { strikethrough = true },
   ["@markup.quote"] = { bg = opts.transparency and nil or base30.black2 },
 
-  ["@comment"] = { fg = base30.grey_fg },
+  ["@comment"] = { fg = base30.light_grey },
   ["@comment.todo"] = { fg = base30.grey, bg = base30.white },
   ["@comment.warning"] = { fg = base30.black2, bg = base16.base09 },
   ["@comment.note"] = { fg = base30.black, bg = base30.blue },
