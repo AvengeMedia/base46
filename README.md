@@ -38,6 +38,7 @@ colorscheme base46-chadracula-evondev
 - Hop.nvim
 - Vim-illuminate
 - LSP (diagnostics)
+- Lualine
 - Nvim Navic
 - LspSaga
 - Mason.nvim
