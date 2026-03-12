@@ -333,6 +333,10 @@ M.load = function(theme)
 
   M.current_theme = theme
   vim.cmd("hi clear")
+  if M.opts.set_background ~= false then
+    vim.o.bg = M.theme_tables[theme].type
+  end
+  vim.g.colors_name = "base46-" .. theme
 
   for name, enabled in pairs(M.opts.integrations) do
     if enabled then
@@ -340,10 +344,6 @@ M.load = function(theme)
         vim.api.nvim_set_hl(0, hlname, hlopts)
       end
     end
-  end
-
-  if M.opts.set_background ~= false then
-    vim.o.bg = M.theme_tables[theme].type
   end
 
   if M.opts.term_colors ~= false then
