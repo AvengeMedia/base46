@@ -327,7 +327,7 @@ M.load = function(theme)
     if base46table then
       M.theme_tables[theme] = base46table
     else
-      vim.notify("Theme '" .. theme .. "' not found", vim.lsp.log.ERROR, { title = "base46" })
+      return vim.notify("Theme '" .. theme .. "' not found", vim.lsp.log.ERROR, { title = "base46" })
     end
   end
 
