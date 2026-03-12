@@ -11,4 +11,7 @@ for theme in "$SCRIPT_DIR"/lua/base46/themes/*.lua; do
     cat >"$SCRIPT_DIR/colors/base46-$theme_name.lua" <<EOF
 require("base46").load("$theme_name")
 EOF
+    cat >"$SCRIPT_DIR/lua/lualine/themes/base46-$theme_name.lua" <<EOF
+return require("lualine.themes._base46")("$theme_name")
+EOF
 done
