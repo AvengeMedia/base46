@@ -132,7 +132,7 @@ Here is the default configuration, which already contains most available options
     telescope_style = "bordered",
     ---Set to nil when nvchad's statusline is disabled
     ---@type "default"|"minimal"|"vscode"|"vscode_colored"|nil
-    statusline_theme = nil,
+    statusline_theme = "default",
     -- Some highlights change on the cheatsheet if it is set to "grid"
     cheatsheet_theme = nil,
   },

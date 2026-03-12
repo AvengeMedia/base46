@@ -125,7 +125,7 @@ local M = {
       telescope_style = "bordered",
       ---Set to nil when nvchad's statusline is disabled
       ---@type "default"|"minimal"|"vscode"|"vscode_colored"|nil
-      statusline_theme = nil,
+      statusline_theme = "default",
       -- Some highlights change on the cheatsheet if it is set to "grid"
       cheatsheet_theme = nil,
     },
@@ -199,6 +199,9 @@ end
 ---@param name string
 ---@return table?
 M.get_integration = function(name)
+  if name == "statusline" and M.opts.nvchad.statusline_theme then
+    package.loaded["base46.integrations.statusline." .. M.opts.nvchad.statusline_theme] = nil
+  end
   package.loaded["base46.integrations." .. name] = nil
   local present, highlights = pcall(require, "base46.integrations." .. name)
   if not present then
