@@ -2,14 +2,14 @@
 
 - This plugin should provide the same themes as those present in NvChad, without requiring either NvChad or `nvconfig` to be configured.
 - Themes behave more like "regular" themes, and can be enabled with a `colorscheme` command.
-- A few things work differently internally, as I have aligned the code style to my own preference. This should not change much the user experience, though.
+- A few things work differently internally. This should not change much the user experience, though.
 
 ## Setup
 
 Install with your favourite plugin manager, and call `require("base46").setup` with your preferred options. Example with `lazy.nvim`:
 ```lua
 {
-  "Silzinc/base46",
+  "AvengeMedia/base46",
   lazy = true,
   opts = {},
 }
@@ -140,7 +140,7 @@ Here is the default configuration, which already contains most available options
 }
 ```
 
-Other than that, you should be able to use the options `hl_override` and `changed_themes` just like NvChad's version would expect you to, although I have not tested these options. These are apparently documented [here](https://github.com/NvChad/ui/blob/v3.0/doc/nvui.txt), but I have not read this in depth since I never planned on using these parameters myself.
+Other than that, you should be able to use the options `hl_override` and `changed_themes` just like NvChad's version would expect you to, although I have not tested these options. These are documented [here](https://github.com/NvChad/ui/blob/v3.0/doc/nvui.txt).
 
 ## Creating your own theme
 
@@ -236,7 +236,7 @@ require("base46").load("foo")
 
 ## Quickly generate a theme based on a builtin one
 
-This plugin was created with the intention of integrating it with [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell), which (like many other material 3 based shells) generates its UI from a single primary color. Following the example below, you can take any of the builtin themes and shift the hues of its colors towards that of a primary color, and get a new theme that will better align with your shell's UI. Here, we take `"nord"` as a base, shift it towards the pure red color `"#ff0000"` and set its background to a warm black `"#120e03"`.
+This plugin was created for integration with [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell), which generates its UI from a single primary color. Following the example below, you can take any of the builtin themes and shift the hues of its colors towards that of a primary color, and get a new theme that will better align with your shell's UI. Here, we take `"nord"` as a base, shift it towards the pure red color `"#ff0000"` and set its background to a warm black `"#120e03"`.
 
 ```lua
 ---colors/nord-red.lua
