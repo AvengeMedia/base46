@@ -55,8 +55,8 @@
 ---@field folder_bg string
 
 local M = {
-  -- there are a few plugins named `base46` in the wild
-  _AUTHOR = "Silzinc",
+  -- integration with DankMaterialShell
+  _DMS_SUPPORT = true,
 
   opts = {
     -- Each theme has a `type` field set to dark or light.
