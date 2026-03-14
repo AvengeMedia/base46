@@ -194,12 +194,17 @@ M.hsl2hex = function(h, s, l)
 end
 
 ---Convert a XYZ color value to RGB
----@param x number
----@param y number
----@param z number
----@return number r
----@return number g
----@return number b
+---XYZ is a color space defined by the CIE (International Commission on Illumination) in 1931.
+---It represents all colors visible to the human eye and serves as a reference for other color spaces.
+---  - X: Represents a mix of cone responses (roughly red)
+---  - Y: Represents luminance (brightness)
+---  - Z: Represents a mix of cone responses (roughly blue)
+---@param x number X component (0-1)
+---@param y number Y component (0-1)
+---@param z number Z component (0-1)
+---@return number r Red component (0-255)
+---@return number g Green component (0-255)
+---@return number b Blue component (0-255)
 M.xyz2rgb = function(x, y, z)
   local r, g, b =
     3.240969941904523 * x - 1.537383177570094 * y - 0.498610760293003 * z,
@@ -212,12 +217,17 @@ M.xyz2rgb = function(x, y, z)
 end
 
 ---Convert a RGB color value to XYZ
----@param r number
----@param g number
----@param b number
----@return number x
----@return number y
----@return number z
+---XYZ is a color space defined by the CIE (International Commission on Illumination) in 1931.
+---It represents all colors visible to the human eye and serves as a reference for other color spaces.
+---  - X: Represents a mix of cone responses (roughly red)
+---  - Y: Represents luminance (brightness)
+---  - Z: Represents a mix of cone responses (roughly blue)
+---@param r number Red component (0-255)
+---@param g number Green component (0-255)
+---@param b number Blue component (0-255)
+---@return number x X component (0-1)
+---@return number y Y component (0-1)
+---@return number z Z component (0-1)
 M.rgb2xyz = function(r, g, b)
   r, g, b = r / 255, g / 255, b / 255
   return 0.412390799265959 * r + 0.357584339383878 * g + 0.180480788401834 * b,
@@ -226,12 +236,17 @@ M.rgb2xyz = function(r, g, b)
 end
 
 ---Convert a JCH color value to XYZ with default viewing conditions as per material 3 design
----@param j number
----@param c number
----@param h number
----@return number x
----@return number y
----@return number z
+---JCH (JzCzHz) is a perceptually uniform color space derived from CIECAM02, where:
+---  - J: Lightness (0-100)
+---  - C: Chroma (color intensity)
+---  - H: Hue (0-360 degrees)
+---This space is designed to better align with human color perception compared to RGB or HSL.
+---@param j number Lightness (0-100)
+---@param c number Chroma (color intensity)
+---@param h number Hue in degrees (0-360)
+---@return number x XYZ X component
+---@return number y XYZ Y component
+---@return number z XYZ Z component
 M.jch2xyz = function(j, c, h)
   local alpha
   if c == 0.0 or j == 0.0 then
@@ -275,12 +290,17 @@ M.jch2xyz = function(j, c, h)
 end
 
 ---Convert a XYZ color value to JCH with default viewing conditions as per material 3 design
----@param x number
----@param y number
----@param z number
----@return number j
----@return number c
----@return number h
+---JCH (JzCzHz) is a perceptually uniform color space derived from CIECAM02, where:
+---  - J: Lightness (0-100)
+---  - C: Chroma (color intensity)
+---  - H: Hue (0-360 degrees)
+---This space is designed to better align with human color perception compared to RGB or HSL.
+---@param x number XYZ X component
+---@param y number XYZ Y component
+---@param z number XYZ Z component
+---@return number j Lightness (0-100)
+---@return number c Chroma (color intensity)
+---@return number h Hue in degrees (0-360)
 M.xyz2jch = function(x, y, z)
   local rC = 0.401288 * x + 0.650173 * y - 0.051461 * z
   local gC = -0.250268 * x + 1.204414 * y + 0.045854 * z
