@@ -1,3 +1,5 @@
+⚠️ For DMS users, please have a look at [DMS integration](#dms-integration).
+
 ## NvChad-independent version of its theme plugin
 
 - This plugin should provide the same themes as those present in NvChad, without requiring either NvChad or `nvconfig` to be configured.
@@ -257,6 +259,16 @@ end
 
 base46.load(theme_name)
 ```
+
+## DMS integration
+
+On top of the many builtin themes of this plugin, [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell) users have access to a matugen template that generates a colorscheme `dms` that is automatically updated with their DMS theme. You can choose the base schemes for dark and light mode, as well as the "harmony" for each (i.e. the amount by which the original themes is tinted towards the DMS theme source color).
+
+After enabling the integration in the settings and running DMS matugen templates, you can just open neovim and run
+```vim
+colorscheme dms
+```
+The theme should hotreload automatically (e.g. when your wallpaper change, the source color of your DMS theme changes or when you switch light/dark mode). Please open an issue in case this does not work.
 
 ## Credits
 
