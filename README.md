@@ -262,6 +262,8 @@ base46.load(theme_name)
 
 ## DMS integration
 
+![DMS integration showcase](./showcase.mp4)
+
 On top of the many builtin themes of this plugin, [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell) users have access to a matugen template that generates a colorscheme `dms` that is automatically updated with their DMS theme. You can choose the base schemes for dark and light mode, as well as the "harmony" for each (i.e. the amount by which the original themes is tinted towards the DMS theme source color).
 
 After enabling the integration in the settings and running DMS matugen templates, you can just open neovim and run
