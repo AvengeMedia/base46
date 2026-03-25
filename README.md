@@ -260,6 +260,14 @@ end
 base46.load(theme_name)
 ```
 
+### Lualine integration
+
+Lualine requires a specific file to be supported. Taking back the example of `nord-red`, you can achieve lualine support with the following file in your neovim config:
+```lua
+---lua/lualine/themes/nord-red.lua
+return require("lualine.themes._base46")("nord-red")
+```
+
 ## DMS integration
 
 https://github.com/user-attachments/assets/c050ff11-0a4a-47ce-85f8-a598854e8c2c
