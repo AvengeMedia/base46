@@ -1,6 +1,8 @@
-return function(theme_name)
-  local theme = assert(require("base46").get_builtin_theme(theme_name))
-  local colors = theme.base_30
+return function(theme)
+  local b46 = require("base46")
+  local theme_table =
+    assert(b46.theme_tables[theme] or b46.get_builtin_theme(theme), "Theme '" .. theme .. "' not found.")
+  local colors = theme_table.base_30
   return {
     normal = {
       a = { bg = colors.blue, fg = colors.black, gui = "bold" },
