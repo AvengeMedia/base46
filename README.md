@@ -1,4 +1,4 @@
-⚠️ For DMS users, please have a look at [DMS integration](#dms-integration).
+⚠️ For DMS users, please have a look at [DMS integration](#dms-integration). For matugen users, please have a look at [Matugen integration](#matugen-integration).
 
 ## NvChad-independent version of its theme plugin
 
@@ -31,6 +31,8 @@ colorscheme base46-chadracula-evondev
 ```
 
 ## Supported Integrations
+<details>
+<summary>List of supported plugins</summary>
 
 - Bufferline.nvim
 - Cmp.nvim
@@ -62,10 +64,15 @@ colorscheme base46-chadracula-evondev
 - Flash.nvim
 - Blink.nvim
 - Blink.pairs
+</details>
 
 ## Configuration
 
-Here is the default configuration, which already contains most available options:
+
+
+<details>
+<summary>Default configuration:</summary>
+
 ```lua
 {
   -- Each theme has a `type` field set to dark or light.
@@ -143,8 +150,12 @@ Here is the default configuration, which already contains most available options
 ```
 
 Other than that, you should be able to use the options `hl_override` and `changed_themes` just like NvChad's version would expect you to, although I have not tested these options. These are documented [here](https://github.com/NvChad/ui/blob/v3.0/doc/nvui.txt).
+</details>
 
 ## Creating your own theme
+
+<details>
+<summary>Create your theme from scratch</summary>
 
 The most natural way, in Neovim, to create your own colorscheme, is to create a lua file with your scheme's name under `colors/` in your config directory. Typically, in `~/.config/nvim/colors/foo.lua` on Linux. Then, you just write a lua script to be executed when `colorscheme foo` is called. Below is how such a file can look like to create a custom theme with base46. For complete examples of these theme tables, you can look at [NvChad's builtins](https://nvchad.com/themes) (look at the file names [here](https://github.com/NvChad/base46/tree/v3.0/lua/base46/themes) to know the exact name of the theme).
 
@@ -235,8 +246,10 @@ local theme_table = {
 require("base46").theme_tables["foo"] = theme_table
 require("base46").load("foo")
 ```
+</details>
 
-## Quickly generate a theme based on a builtin one
+<details>
+<summary>Quickly generate a theme based on a builtin one</summary>
 
 This plugin was created for integration with [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShell), which generates its UI from a single primary color. Following the example below, you can take any of the builtin themes and shift the hues of its colors towards that of a primary color, and get a new theme that will better align with your shell's UI. Here, we take `"nord"` as a base, shift it towards the pure red color `"#ff0000"` and set its background to a warm black `"#120e03"`.
 
@@ -267,6 +280,27 @@ Lualine requires a specific file to be supported. Taking back the example of `no
 ---lua/lualine/themes/nord-red.lua
 return require("lualine.themes._base46")("nord-red")
 ```
+</details>
+
+## Matugen integration
+
+Skip this if you want the full integration with DankMaterialShell.
+
+It is possible to automate the generation of a scheme, with hot reload, using [matugen](https://github.com/InioX/matugen). Copy the contents of [`matugen/`](https://github.com/AvengeMedia/base46/tree/v3.0/matugen) into your `~/.config/matugen/` and add the following to your `~/.config/matugen/config.toml` file:
+```toml
+[templates.neovim-colors]
+input_path = '~/.config/matugen/neovim-colors.lua'
+output_path = '~/.config/nvim/colors/base46-matugen.lua'
+
+[templates.neovim-lualine]
+input_path = '~/.config/matugen/templates/neovim-lualine.lua'
+output_path = '~/.config/nvim/lua/lualine/themes/base46-matugen.lua'
+```
+Then, run `matugen` as you usually do, open neovim, run 
+```vim
+colorscheme base46-matugen
+```
+and enjoy! You may modify `~/.config/matugen/neovim-colors.lua` to change the NvChad theme used as a base and the amount of tint you want on its colors.
 
 ## DMS integration
 
