@@ -293,14 +293,14 @@ input_path = '~/.config/matugen/neovim-colors.lua'
 output_path = '~/.config/nvim/colors/base46-matugen.lua'
 
 [templates.neovim-lualine]
-input_path = '~/.config/matugen/templates/neovim-lualine.lua'
+input_path = '~/.config/matugen/neovim-lualine.lua'
 output_path = '~/.config/nvim/lua/lualine/themes/base46-matugen.lua'
 ```
 Then, run `matugen` as you usually do, open neovim, run 
 ```vim
 colorscheme base46-matugen
 ```
-and enjoy! You may modify `~/.config/matugen/neovim-colors.lua` to change the NvChad theme used as a base and the amount of tint you want on its colors.
+and enjoy! You may modify `~/.config/matugen/neovim-colors.lua` to change the NvChad theme used as a base (`github_light`/`github_dark` by default) and the amount of tint you want on its colors (harmony = 0.5 by default).
 
 ## DMS integration
 
