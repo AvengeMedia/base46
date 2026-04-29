@@ -300,7 +300,7 @@ Then, run `matugen` as you usually do, open neovim, run
 ```vim
 colorscheme base46-matugen
 ```
-and enjoy! You may modify `~/.config/matugen/neovim-colors.lua` to change the NvChad theme used as a base (`github_light`/`github_dark` by default) and the amount of tint you want on its colors (harmony = 0.5 by default).
+and enjoy! You may modify `~/.config/matugen/neovim-colors.lua` to change the NvChad theme used as a base (`github_light`/`github_dark` by default, see the available list [here](https://nvchad.com/themes/) and their corresponding codes in the file names [here](https://github.com/AvengeMedia/base46/tree/v3.0/lua/base46/themes)) and the amount of tint you want on its colors (harmony = 0.5 by default).
 
 ## DMS integration
 
