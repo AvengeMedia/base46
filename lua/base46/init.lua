@@ -190,8 +190,8 @@ M.extend_default_hl = function(highlights, integration_name)
   end
 
   local hl_override = M.opts.hl_override or {}
-  local overriden_hl = M.turn_str_to_color(hl_override)
-  highlights = vim.tbl_deep_extend("force", highlights, overriden_hl)
+  highlights = vim.tbl_deep_extend("force", highlights, hl_override)
+  highlights = M.turn_str_to_color(highlights)
 
   return highlights
 end
