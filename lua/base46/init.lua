@@ -369,6 +369,11 @@ M.override_theme = function(default_theme, theme_name)
 end
 
 M.load_all_highlights = function()
+  -- Sync settings from NvChad's nvconfig (includes chadrc)
+  local ok, nvconfig = pcall(require, "nvconfig")
+  if ok and nvconfig.base46 then
+    M.setup(nvconfig.base46)
+  end
   if M.current_theme then
     M.load(M.current_theme)
   end
