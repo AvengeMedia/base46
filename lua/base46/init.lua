@@ -139,6 +139,10 @@ M.setup = function(opts)
   M.opts = vim.tbl_deep_extend("force", M.opts, opts or {})
 end
 
+M.merge_tb = function(...)
+  return vim.tbl_deep_extend("force", ...)
+end
+
 local lighten = require("base46.colors").change_hex_lightness
 local mixcolors = require("base46.colors").mix
 
