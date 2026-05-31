@@ -364,4 +364,11 @@ M.override_theme = function(default_theme, theme_name)
   return vim.tbl_deep_extend("force", default_theme, changed_themes.all or {}, changed_themes[theme_name] or {})
 end
 
+M.load_all_highlights = function()
+  if M.current_theme then
+    M.load(M.current_theme)
+  end
+  vim.api.nvim_exec_autocmds("User", { pattern = "NvThemeReload" })
+end
+
 return M
