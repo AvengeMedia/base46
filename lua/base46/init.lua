@@ -108,6 +108,7 @@ local M = {
       rainbowdelimiters = true,
       ["render-markdown"] = true,
       semantic_tokens = true,
+      ["snacks-dashboard"] = true,
       ["tiny-inline-diagnostic"] = true,
       todo = true,
       trouble = true,

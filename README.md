@@ -34,6 +34,7 @@ colorscheme base46-chadracula-evondev
 <details>
 <summary>List of supported plugins</summary>
 
+- Snacks.nvim's dashboard.
 - Bufferline.nvim
 - Cmp.nvim
 - Codeactionmenu
@@ -67,8 +68,6 @@ colorscheme base46-chadracula-evondev
 </details>
 
 ## Configuration
-
-
 
 <details>
 <summary>Default configuration:</summary>
@@ -125,6 +124,7 @@ colorscheme base46-chadracula-evondev
     rainbowdelimiters = true,
     ["render-markdown"] = true,
     semantic_tokens = true,
+    ["snacks-dashboard"] = true,
     ["tiny-inline-diagnostic"] = true,
     todo = true,
     trouble = true,
