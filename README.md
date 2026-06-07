@@ -47,6 +47,8 @@ colorscheme base46-chadracula-evondev
 - Nvim Navic
 - LspSaga
 - Mason.nvim
+- mini.tabline
+- mini.icons
 - Neotest
 - Notify.nvim
 - Nvim-tree
@@ -120,6 +122,7 @@ colorscheme base46-chadracula-evondev
     lspsaga = true,
     markview = true,
     ["mini-tabline"] = true,
+    ["mini-icons"] = true,
     navic = true,
     neogit = true,
     notify = true,

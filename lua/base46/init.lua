@@ -102,6 +102,7 @@ local M = {
       lspsaga = true,
       markview = true,
       ["mini-tabline"] = true,
+      ["mini-icons"] = true,
       navic = true,
       neogit = true,
       notify = true,
