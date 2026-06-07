@@ -2,65 +2,55 @@ local theme = require("base46").current_theme
 local base16 = require("base46").theme_tables[theme].base_16
 
 return {
-
   ["@lsp.type.comment"] = { link = "Comment" },
 
-  --
-  ["@lsp.type.operator"] = { fg = theme.base05 },
-  ["@lsp.type.punctuation"] = { fg = theme.base05 },
-  ["@lsp.type.variable"] = { fg = theme.base05 },
-  ["@lsp.type.attributeBracket"] = { fg = theme.base05 },
+  ["@lsp.type.operator"] = { fg = base16.base05 },
+  ["@lsp.type.punctuation"] = { fg = base16.base05 },
+  ["@lsp.type.variable"] = { fg = base16.base05 },
+  ["@lsp.type.attributeBracket"] = { fg = base16.base05 },
 
-  --
-  ["@lsp.type.macro"] = { fg = theme.base08 },
-  ["@lsp.type.formatSpecifier"] = { fg = theme.base08 },
-  ["@lsp.type.namespace"] = { fg = theme.base08 },
-  ["@lsp.type.parameter"] = { fg = theme.base08 },
-  ["@lsp.type.property"] = { fg = theme.base08 },
-  ["@lsp.type.decorator"] = { fg = theme.base08 },
-  ["@lsp.type.builtinAttribute"] = { fg = theme.base08 },
-  ["@lsp.type.generic"] = { fg = theme.base08 },
+  ["@lsp.type.macro"] = { fg = base16.base08 },
+  ["@lsp.type.formatSpecifier"] = { fg = base16.base08 },
+  ["@lsp.type.namespace"] = { fg = base16.base08 },
+  ["@lsp.type.parameter"] = { fg = base16.base08 },
+  ["@lsp.type.property"] = { fg = base16.base08 },
+  ["@lsp.type.decorator"] = { fg = base16.base08 },
+  ["@lsp.type.builtinAttribute"] = { fg = base16.base08 },
+  ["@lsp.type.generic"] = { fg = base16.base08 },
 
-  --
-  ["@lsp.type.boolean"] = { fg = theme.base09 },
-  ["@lsp.type.enumMember"] = { fg = theme.base09 },
-  ["@lsp.type.const"] = { fg = theme.base09 },
-  ["@lsp.type.number"] = { fg = theme.base09 },
-  ["@lsp.type.selfKeyword"] = { fg = theme.base09 },
-  ["@lsp.type.selfTypeKeyword"] = { fg = theme.base09 },
-  ["@lsp.typemod.enumMember.defaultLibrary"] = { fg = theme.base09 },
-  ["@lsp.typemod.variable.defaultLibrary"] = { fg = theme.base09 },
-  ["@lsp.typemod.variable.static"] = { fg = theme.base09 },
+  ["@lsp.type.boolean"] = { fg = base16.base09 },
+  ["@lsp.type.enumMember"] = { fg = base16.base09 },
+  ["@lsp.type.const"] = { fg = base16.base09 },
+  ["@lsp.type.number"] = { fg = base16.base09 },
+  ["@lsp.type.selfKeyword"] = { fg = base16.base09 },
+  ["@lsp.type.selfTypeKeyword"] = { fg = base16.base09 },
+  ["@lsp.typemod.enumMember.defaultLibrary"] = { fg = base16.base09 },
+  ["@lsp.typemod.variable.defaultLibrary"] = { fg = base16.base09 },
+  ["@lsp.typemod.variable.static"] = { fg = base16.base09 },
 
-  --
-  ["@lsp.type.struct"] = { fg = theme.base0A, sp = "none" },
-  ["@lsp.type.class"] = { fg = theme.base0A, sp = "none" },
-  ["@lsp.type.builtinType"] = { fg = theme.base0A },
-  ["@lsp.type.deriveHelper"] = { fg = theme.base0A },
-  ["@lsp.type.enum"] = { fg = theme.base0A, sp = "none" },
-  ["@lsp.type.interface"] = { fg = theme.base0A, sp = "none" },
-  ["@lsp.type.typeAlias"] = { fg = theme.base0A },
-  ["@lsp.typemod.class.defaultLibrary"] = { fg = theme.base0A },
-  ["@lsp.typemod.enum.defaultLibrary"] = { fg = theme.base0A },
-  ["@lsp.typemod.struct.defaultLibrary"] = { fg = theme.base0A },
+  ["@lsp.type.struct"] = { fg = base16.base0A, sp = "none" },
+  ["@lsp.type.class"] = { fg = base16.base0A, sp = "none" },
+  ["@lsp.type.builtinType"] = { fg = base16.base0A },
+  ["@lsp.type.deriveHelper"] = { fg = base16.base0A },
+  ["@lsp.type.enum"] = { fg = base16.base0A, sp = "none" },
+  ["@lsp.type.interface"] = { fg = base16.base0A, sp = "none" },
+  ["@lsp.type.typeAlias"] = { fg = base16.base0A },
+  ["@lsp.typemod.class.defaultLibrary"] = { fg = base16.base0A },
+  ["@lsp.typemod.enum.defaultLibrary"] = { fg = base16.base0A },
+  ["@lsp.typemod.struct.defaultLibrary"] = { fg = base16.base0A },
 
-  --
-  ["@lsp.type.string"] = { fg = theme.base0B },
+  ["@lsp.type.string"] = { fg = base16.base0B },
 
-  --
-  ["@lsp.type.escapeSequence"] = { fg = theme.base0C },
-  ["@lsp.type.lifetime"] = { fg = theme.base0C },
+  ["@lsp.type.escapeSequence"] = { fg = base16.base0C },
+  ["@lsp.type.lifetime"] = { fg = base16.base0C },
 
-  --
-  ["@lsp.type.function"] = { fg = theme.base0D },
-  ["@lsp.type.method"] = { fg = theme.base0D },
-  ["@lsp.typemod.function.defaultLibrary"] = { fg = theme.base0D },
-  ["@lsp.typemod.macro.defaultLibrary"] = { fg = theme.base0D },
-  ["@lsp.typemod.method.defaultLibrary"] = { fg = theme.base0D },
-  ["@lsp.typemod.variable.callable"] = { fg = theme.base0D },
+  ["@lsp.type.function"] = { fg = base16.base0D },
+  ["@lsp.type.method"] = { fg = base16.base0D },
+  ["@lsp.typemod.function.defaultLibrary"] = { fg = base16.base0D },
+  ["@lsp.typemod.macro.defaultLibrary"] = { fg = base16.base0D },
+  ["@lsp.typemod.method.defaultLibrary"] = { fg = base16.base0D },
+  ["@lsp.typemod.variable.callable"] = { fg = base16.base0D },
 
-  --
-  ["@lsp.type.keyword"] = { fg = theme.base0E },
-  ["@lsp.typemod.keyword.async"] = { fg = theme.base0E },
-  --
+  ["@lsp.type.keyword"] = { fg = base16.base0E },
+  ["@lsp.typemod.keyword.async"] = { fg = base16.base0E },
 }
