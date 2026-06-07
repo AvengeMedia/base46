@@ -47,6 +47,7 @@ colorscheme base46-chadracula-evondev
 - Nvim Navic
 - LspSaga
 - Mason.nvim
+- Neotest
 - Notify.nvim
 - Nvim-tree
 - Telescope.nvim
@@ -93,6 +94,7 @@ colorscheme base46-chadracula-evondev
     git = true,
     lsp = true,
     mason = true,
+    neotest = true,
     nvcheatsheet = true,
     nvimtree = true,
     statusline = true,

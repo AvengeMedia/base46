@@ -76,6 +76,7 @@ local M = {
       git = true,
       lsp = true,
       mason = true,
+      neotest = true,
       nvcheatsheet = true,
       nvimtree = true,
       statusline = true,
