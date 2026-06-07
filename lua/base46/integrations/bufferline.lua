@@ -7,7 +7,7 @@ return {
     bg = colors.black2,
   },
 
-  BufferlineIndicatorVisible = {
+  BufferLineIndicatorVisible = {
     fg = colors.black2,
     bg = colors.black2,
   },
@@ -50,7 +50,7 @@ return {
     fg = colors.grey_fg,
     bg = colors.black2,
   },
-  BufferlineIndicatorSelected = {
+  BufferLineIndicatorSelected = {
     fg = colors.black,
     bg = colors.black,
   },
