@@ -57,6 +57,7 @@ colorscheme base46-chadracula-evondev
 - Trouble.nvim
 - Whichkey.nvim
 - git-conflict.nvim
+- gitsigns.nvim
 - Orgmode
 - diffview.nvim
 - leap.nvim
@@ -110,6 +111,7 @@ colorscheme base46-chadracula-evondev
     edgy = true,
     flash = true,
     ["git-conflict"] = true,
+    gitsigns = true,
     grug_far = true,
     hop = true,
     leap = true,

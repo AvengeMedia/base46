@@ -94,6 +94,7 @@ local M = {
       edgy = true,
       flash = true,
       ["git-conflict"] = true,
+      gitsigns = true,
       grug_far = true,
       hop = true,
       leap = true,
