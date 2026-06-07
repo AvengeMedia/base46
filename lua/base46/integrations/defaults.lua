@@ -28,7 +28,7 @@ local defaults = {
   Error = { fg = base16.base00, bg = base16.base08 },
   ErrorMsg = { fg = base16.base08, bg = base16.base00 },
   Exception = { fg = base16.base08 },
-  FoldColumn = { bg = "none" },
+  FoldColumn = { fg = theme.base0F, bg = "none" },
   Folded = { fg = colors.light_grey, bg = colors.black2 },
   IncSearch = { fg = base16.base01, bg = base16.base09 },
   Macro = { fg = base16.base08 },
